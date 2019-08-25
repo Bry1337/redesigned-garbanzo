@@ -23,7 +23,9 @@ class ViewModelFactory(private val activity: AppCompatActivity) : ViewModelProvi
           .build()
       return HomeViewModel(db.articleDao()) as T
     } else if (modelClass.isAssignableFrom(DetailViewModel::class.java)) {
-      return DetailViewModel() as T
+      val db = Room.databaseBuilder(activity.applicationContext, AppDatabase::class.java, Constants.ARTICLE)
+          .build()
+      return DetailViewModel(db.articleDao()) as T
     }
     throw IllegalArgumentException("Unknown ViewModel Class")
   }

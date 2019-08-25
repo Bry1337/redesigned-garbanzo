@@ -30,7 +30,9 @@ data class Article(
     @SerializedName("publishedAt")
     val publishedAt: String?,
     @SerializedName("content")
-    val content: String?) : Parcelable {
+    val content: String?,
+    val isSaved: Boolean = false,
+    val isArchived: Boolean = false) : Parcelable {
   constructor(parcel: Parcel) : this(
       parcel.readLong(),
       parcel.readString(),
@@ -39,7 +41,9 @@ data class Article(
       parcel.readString(),
       parcel.readString(),
       parcel.readString(),
-      parcel.readString()) {
+      parcel.readString(),
+      parcel.readByte() != 0.toByte(),
+      parcel.readByte() != 0.toByte()) {
   }
 
   override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -51,6 +55,8 @@ data class Article(
     parcel.writeString(urlToImage)
     parcel.writeString(publishedAt)
     parcel.writeString(content)
+    parcel.writeByte(if (isSaved) 1 else 0)
+    parcel.writeByte(if (isArchived) 1 else 0)
   }
 
   override fun describeContents(): Int {

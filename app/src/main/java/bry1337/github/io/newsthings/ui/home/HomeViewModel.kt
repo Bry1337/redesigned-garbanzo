@@ -24,7 +24,7 @@ class HomeViewModel(private val articleDao: ArticleDao) : BaseViewModel() {
   lateinit var api: NewsApi
 
   val topNewsAdapter: TopNewsAdapter = TopNewsAdapter()
-  val errorMesssage: MutableLiveData<String> = MutableLiveData()
+  val errorMessage: MutableLiveData<String> = MutableLiveData()
   val loadingVisibility: MutableLiveData<Int> = MutableLiveData()
   private lateinit var subscription: Disposable
 
@@ -58,7 +58,7 @@ class HomeViewModel(private val articleDao: ArticleDao) : BaseViewModel() {
   }
 
   private fun onError(throwable: Throwable) {
-    errorMesssage.value = throwable.localizedMessage
+    errorMessage.value = throwable.localizedMessage
   }
 
   private fun onRetrieveNewsStarted() {

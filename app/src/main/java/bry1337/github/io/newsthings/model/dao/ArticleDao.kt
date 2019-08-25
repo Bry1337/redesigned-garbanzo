@@ -21,4 +21,10 @@ interface ArticleDao {
   @Insert(onConflict = OnConflictStrategy.REPLACE)
   fun insertArticleList(articleList: List<Article>)
 
+  @Query("Update article set isSaved = :isSaved where id = :id")
+  fun saveArticle(isSaved: Boolean, id: Long)
+
+  @Query("Update article set isArchived = :isArchived where id = :id")
+  fun archiveArticle(isArchived: Boolean, id: Long)
+
 }

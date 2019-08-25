@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">News Things</string>
   <string name="news_things">News Things</string>
+  <string name="save">Save</string>
+  <string name="archive">Archive</string>
+  <string name="successfully_saved">Successfully saved</string>
+  <string name="archive_article_succeed">Archived article succeed</string>
 </resources>

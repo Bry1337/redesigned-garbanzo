@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import bry1337.github.io.newsthings.databinding.FragmentDetailBinding
 import bry1337.github.io.newsthings.injection.ViewModelFactory
@@ -38,7 +40,21 @@ class DetailFragment : Fragment() {
     binding.viewModel = viewModel
     article = arguments?.let { DetailFragmentArgs.fromBundle(it).article }
     viewModel.setValues(article)
+    viewModel.successMessage.observe(this, Observer { value ->
+      if(value != null){
+        Toast.makeText(activity, getString(value), Toast.LENGTH_SHORT).show()
+      }
+    })
     Glide.with(activity).load(article?.urlToImage).apply(RequestOptions().centerCrop()).into(ivNewsImage)
+    btnSave.setOnClickListener {
+      if (article != null) {
+        viewModel.saveToArticle(article!!)
+      }
+    }
+    btnArchive.setOnClickListener {
+      if (article != null)
+        viewModel.archiveArticle(article!!)
+    }
   }
 
   override fun onAttach(context: Context?) {
