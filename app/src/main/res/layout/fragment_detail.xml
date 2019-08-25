@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+  <data>
+    <variable
+        name="viewModel"
+        type="bry1337.github.io.newsthings.ui.detail.DetailViewModel"
+        />
+  </data>
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      >
+    <ImageView
+        android:id="@+id/ivNewsImage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/value_200dp"
+        android:layout_marginBottom="@dimen/value_4dp"
+        android:layout_marginEnd="@dimen/value_4dp"
+        android:layout_marginStart="@dimen/value_4dp"
+        android:layout_marginTop="@dimen/value_10dp"
+        />
+    <TextView
+        android:id="@+id/tvAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/value_2dp"
+        app:mutableText="@{viewModel.getAuthor()}"
+        />
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/value_2dp"
+        app:mutableText="@{viewModel.getTitle()}"
+
+        />
+    <TextView
+        android:id="@+id/tvPublishedAt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/value_2dp"
+        app:mutableText="@{viewModel.getPublishedAt()}"
+        />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/value_2dp"
+        app:mutableText="@{viewModel.getDescription()}"
+        />
+  </LinearLayout>
+</layout>

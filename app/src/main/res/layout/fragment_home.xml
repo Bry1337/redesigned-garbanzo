@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+  <data>
+  <variable
+  name="viewModel"
+  type="bry1337.github.io.newsthings.ui.home.HomeViewModel"
+  />
+  </data>
+  <RelativeLayout
+      android:id="@+id/rlHeader"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentTop="true"
+      android:gravity="center_vertical"
+      >
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTransactionsByPerson"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_news"
+        app:adapter="@{viewModel.getTopNewsAdapter()}"
+        />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:mutableVisibility="@{viewModel.getLoadingVisibility()}"
+        />
+
+  </RelativeLayout>
+</layout>

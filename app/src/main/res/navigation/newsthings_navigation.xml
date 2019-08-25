@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/newsthings_navigation"
+    app:startDestination="@+id/homeFragment">
+
+  <fragment
+      android:id="@+id/homeFragment"
+      android:name="bry1337.github.io.newsthings.ui.home.HomeFragment"
+      android:label="@string/news_things"
+      tools:layout="@layout/fragment_home">
+    <action
+        android:id="@+id/action_to_detail"
+        app:destination="@+id/detailFragment" />
+  </fragment>
+
+  <fragment
+      android:id="@+id/detailFragment"
+      android:name="bry1337.github.io.newsthings.ui.detail.DetailFragment"
+      android:label="@string/news_things"
+      tools:layout="@layout/fragment_detail">
+    <argument
+        android:name="article"
+        app:argType="bry1337.github.io.newsthings.model.Article" />
+  </fragment>
+
+</navigation>
